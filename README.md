@@ -9,7 +9,7 @@ number as the only exogenous predictor.
 reproducible verification framework.*
 
 > **Status: data stage.** The dataset is built, audited and tested. The evaluation
-> protocol, models and results are not yet in the repository (see [Roadmap](#roadmap)).
+> protocol, models and results are not yet in the repository (see [`docs/ROADMAP.md`](docs/ROADMAP.md)).
 
 ## Principles
 
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 | Source | File | Coverage |
 |---|---|---|
 | SOHO/LASCO CDAW CME catalog, universal list (text) | `data/raw/cdaw_univ_all_2026-07-31.txt` | 1996-01-11 to 2026-07-31, 43 440 CMEs |
-| SILSO monthly mean total sunspot number V2.0 | `data/raw/SN_m_tot_V2.0.csv` | *pending* |
+| SILSO monthly mean total sunspot number V2.0 | `data/raw/SN_m_tot_V2.0.csv` | 1749-01 to 2026-09 (definitive to 2026-06) |
 
 Processed outputs:
 
@@ -77,14 +77,7 @@ inhomogeneity of the total CME count across solar cycles.
 
 ## Roadmap
 
-| Stage | Content | Status |
-|---|---|---|
-| F0 | Data audit and versioned dataset | done (SSN file and official gap list pending) |
-| F1 | Evaluation protocol: rolling-origin and leave-one-cycle-out validation, horizons, baselines, metrics | next |
-| F2 | Models: persistence, climatology, cycle-phase analogues, Poisson/negative-binomial GLMs on SSN, ARIMA/ARIMAX for comparison | — |
-| F3 | Results and figures | — |
-| F4 | Manuscript | — |
-| F5 | Submission and Zenodo release | — |
+Current stage: **F0, data** (nearly complete). Full plan and progress: [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Relation to the previous repository
 

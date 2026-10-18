@@ -4,15 +4,18 @@ title: "CME rate forecast verification"
 type: software
 version: 0.1.0
 license: MIT
-# TO CONFIRM: author list, spelling, affiliations, ORCID iDs and repository URL.
+# Affiliations from the previous manuscript. Pending: ORCID iDs; spelling "Chávez" vs "Chavez".
 authors:
   - family-names: "Jiménez Sanabria"
     given-names: "Juan Rafael"
+    affiliation: "Astrophysics and Cosmology Group, Department of Physics, Universidad Pedagógica y Tecnológica de Colombia"
   - family-names: "Pineda Cruz"
     given-names: "Daniel Felipe"
+    affiliation: "Applied Nuclear Physics and Simulation Group (FINUAS), Department of Physics, Universidad Pedagógica y Tecnológica de Colombia"
   - family-names: "Chávez Aponte"
     given-names: "Cristian David"
-repository-code: "https://github.com/JuanAnarch7/cme-rate-forecast-verification"
+    affiliation: "Astrophysics and Cosmology Group, Department of Physics, Universidad Pedagógica y Tecnológica de Colombia"
+repository-code: "https://github.com/JuanAnarch7/How-predictable-are-coronal-mass-ejection-rates-"
 keywords:
   - coronal mass ejections
   - sunspot number

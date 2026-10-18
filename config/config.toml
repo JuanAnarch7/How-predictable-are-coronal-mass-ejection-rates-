@@ -49,8 +49,8 @@ gap_threshold_days = 5.0
 max_gap_fraction_usable = 0.5
 
 [cycles]
-# Month boundaries used to label solar cycles in summaries (minimum months, SILSO 13-month smoothed).
-# Values to be confirmed against SILSO before publication (docs/DECISIONS.md, D-07).
+# First month of each solar cycle: minimum of the 13-month smoothed SSN computed from the
+# versioned SILSO file (docs/DECISIONS.md, D-07; verified by tests/test_dataset.py).
 c23_start = "1996-05"
 c24_start = "2008-12"
 c25_start = "2019-12"

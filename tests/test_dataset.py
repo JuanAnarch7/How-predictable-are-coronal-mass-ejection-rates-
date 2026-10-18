@@ -44,6 +44,25 @@ class TestRealCatalog(unittest.TestCase):
         fast_2025 = (e["v_lin"] >= 1000) & (e["datetime"].dt.year == 2025)
         self.assertEqual(int(fast_2025.sum()), 70)
 
+    def test_cycle_boundaries_are_smoothed_ssn_minima(self):
+        """config [cycles] must match the minima of the 13-month smoothed SSN (D-07)."""
+        if "ssn" not in self.monthly.columns:
+            self.skipTest("SSN file not present")
+        from cmerate.ssn import read_ssn
+        s = read_ssn(repo_path(self.cfg["data"]["ssn"]["raw_file"])).dropna(subset=["ssn"]).reset_index(drop=True)
+        x = s["ssn"].to_numpy()
+        smoothed = np.full(len(x), np.nan)
+        for i in range(6, len(x) - 6):
+            w = x[i - 6:i + 7]
+            smoothed[i] = (0.5 * w[0] + w[1:12].sum() + 0.5 * w[12]) / 12
+        s["smoothed"] = smoothed
+        cycles = self.cfg["cycles"]
+        for key, (lo, hi) in {"c23_start": ("1995-01", "1998-12"),
+                              "c24_start": ("2007-01", "2010-12"),
+                              "c25_start": ("2018-01", "2021-12")}.items():
+            window = s[(s["yearmonth"] >= lo) & (s["yearmonth"] <= hi)]
+            self.assertEqual(window.loc[window["smoothed"].idxmin(), "yearmonth"], cycles[key], key)
+
     def test_soho_outage_months_unusable(self):
         unusable = set(self.monthly.loc[~self.monthly["usable"], "yearmonth"])
         for ym in ["1998-07", "1998-08", "1998-09", "1999-01"]:

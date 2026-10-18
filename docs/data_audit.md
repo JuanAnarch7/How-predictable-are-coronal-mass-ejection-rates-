@@ -35,27 +35,27 @@ Overall 63.5 % of events are flagged, but only 8.7 % of fast CMEs (V ≥ 1000 km
 13.5 % of full halos.
 
 CMEs per unit sunspot number relative to Solar Cycle 23 (sum of counts / sum of monthly
-SSN over usable months; cycle boundaries as in `config/config.toml`; 146, 132 and 75
-months for C23, C24 and C25, the last up to 2026-02):
+SSN over usable months; versioned SILSO file `data/raw/SN_m_tot_V2.0.csv`; cycle boundaries
+as in `config/config.toml`; 146, 132 and 79 months for C23, C24 and C25, the last up to
+2026-06, the last definitive SSN month):
 
 | Set | C24/C23 | C25/C23 |
 |---|---|---|
 | All CMEs | 1.72 | 1.03 |
-| All, excluding flagged | 0.97 | 0.62 |
-| Flagged only | 2.44 | 1.42 |
-| Fast (≥ 1000 km/s) | 0.73 | 1.13 |
-| Fast, excluding flagged | 0.73 | 1.06 |
-| Halo | 1.48 | 1.34 |
-| Halo, excluding flagged | 1.35 | 1.18 |
-| Wide (120–360°) | 1.97 | 1.64 |
+| All, excluding flagged | 0.97 | 0.61 |
+| Flagged only | 2.44 | 1.43 |
+| Fast (≥ 1000 km/s) | 0.73 | 1.11 |
+| Fast, excluding flagged | 0.73 | 1.04 |
+| Halo | 1.48 | 1.33 |
+| Halo, excluding flagged | 1.35 | 1.16 |
+| Wide (120–360°) | 1.97 | 1.63 |
 | Wide, excluding flagged | 1.81 | 1.43 |
 
-> Caveats: (1) these ratios used the sunspot numbers from the previous repository's
-> `master_monthly.csv`, whose SILSO file version was not recorded; they will be recomputed
-> with the versioned SSN file and reported from code. (2) The ratios move by up to ~0.15
-> depending on which months are excluded (e.g. excluding every month with any 5-day gap
-> gives 1.58 and 0.91 for the first two rows); the qualitative conclusions below hold in
-> all variants tried.
+> Caveats: (1) an earlier, unversioned SSN copy gave values within 0.03 of these.
+> (2) The ratios move by up to ~0.15 depending on which months are excluded (e.g.
+> excluding every month with any 5-day gap gives 1.58 and 0.91 for the first two rows);
+> the qualitative conclusions below hold in all variants tried. (3) These are exploratory
+> figures; any ratio quoted in the manuscript will be produced by code.
 
 Interpretation:
 - The apparent excess of CMEs per sunspot in Cycle 24 in the total count comes mostly from
@@ -101,9 +101,21 @@ identical except for one event whose PA and width changed.
 - July 2026 has 146 CMEs and no fast CME; the most recent months may still be incomplete
   and are not used for verification until confirmed with a later download.
 
-## 6. Pending
+## 6. Sunspot number
 
-- SILSO file (`SN_m_tot_V2.0`), versioned, with the provisional/definitive marker.
+The SILSO file `SN_m_tot_V2.0.csv` (downloaded 2026-10-18) covers 1749-01 to 2026-09;
+values from 2026-07 onwards are provisional. Compared with the copy used by the previous
+repository, 360 of 362 common months are identical; January and February 2026 were revised
+(112.5 → 115.0 and 78.2 → 77.4). Provisional values therefore change, and forecasts
+verified retrospectively must account for which SSN values were available at each issue
+date.
+
+The solar-cycle minima used as cycle boundaries (1996-05, 2008-12, 2019-12) are the minima
+of the 13-month smoothed SSN computed from this file (11.2, 2.2 and 1.8); a regression test
+checks them.
+
+## 7. Pending
+
 - Official LASCO data-gap information.
 - Archive of historical sunspot-number forecasts with issue dates (for verifying forecasts
   that use a predicted, rather than observed, sunspot number).

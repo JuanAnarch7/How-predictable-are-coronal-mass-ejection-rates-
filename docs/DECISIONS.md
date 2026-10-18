@@ -12,8 +12,8 @@ and the manuscript must report them.
 | D-04 | Catalog parsed keeping the full remark; quality flags ("Poor Event", "Very Poor Event") stored per event. | decided | 2026-10-18 |
 | D-05 | Primary target: fast CMEs (V ≥ 1000 km/s). Secondary: full halos, wide CMEs (120–360°), total count; each with and without flagged events. | **pending author confirmation** | — |
 | D-06 | Observing coverage from a 5-day gap proxy; months with > 50 % gap set to missing. To be replaced by official LASCO gap information. | provisional | 2026-10-18 |
-| D-07 | Solar-cycle boundaries 1996-05, 2008-12, 2019-12. To be checked against SILSO minima. | provisional | 2026-10-18 |
-| D-08 | SILSO SN_m_tot_V2.0 file: version and download date. | Decided | 2026-10-18 |
+| D-07 | Solar-cycle boundaries 1996-05, 2008-12, 2019-12: minima of the 13-month smoothed SSN from the versioned SILSO file (checked by a test). | decided | 2026-10-18 |
+| D-08 | SILSO SN_m_tot_V2.0 file downloaded 2026-10-18 (`data/raw/PROVENANCE.md`). | decided | 2026-10-18 |
 | D-09 | Source of historical SSN forecasts with issue dates (NOAA/NASA 2019 panel, reconstructed SILSO methods, SILSO archive). | **pending** | — |
 | D-10 | Annual series derived from the monthly table (never built separately). Annual verification by 12-month-ahead totals issued monthly. | decided (verification details in F1) | 2026-10-17 |
 | D-11 | Events without linear speed are kept and counted in the total only. | decided | 2026-10-18 |

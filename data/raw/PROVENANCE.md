@@ -11,14 +11,16 @@ with a new name and a new entry below; update `config/config.toml` to point to i
 | Product | SOHO/LASCO CME Catalog, universal list, text version |
 | Source | https://cdaw.gsfc.nasa.gov/CME_list/ |
 | Coverage | 1996-01-11 00:14:36 to 2026-07-31 22:00:31 (43 440 CMEs) |
-| Download date | **TO BE CONFIRMED by the author** |
+| Download date | pending: to be supplied by the author (after 2026-07-31) |
 | SHA-256 | `da8320553490467659a55d05cbfe83b941bc49f28dafeddc326429eb98265725` |
 | Size | 5 472 211 bytes |
 | Catalog version notes | Includes the position-angle correction applied by CDAW on 2026-01-30 (remarks "Fixed the PA issue on 2026-01-30" for events from August 2019 onwards). |
 | Original file name | `Soho_Lasco_2026_07_31.txt` |
 
-Acknowledgement requested by the catalog providers: to be copied from the CDAW site into
-the manuscript.
+Acknowledgement (as used in the previous manuscript; check the current wording on the CDAW
+site before submission): "This CME catalog is generated and maintained at the CDAW Data
+Center by NASA and The Catholic University of America in cooperation with the Naval
+Research Laboratory. SOHO is a project of international cooperation between ESA and NASA."
 
 ## SILSO sunspot number
 
