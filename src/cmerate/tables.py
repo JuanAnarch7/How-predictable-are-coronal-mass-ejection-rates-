@@ -98,5 +98,7 @@ def build_annual(monthly: pd.DataFrame) -> pd.DataFrame:
         agg["n_months_ssn_provisional"] = ("ssn_provisional", "sum")
     out = m.groupby("year").agg(**agg).reset_index()
     out["coverage_fraction"] = (out["covered_days"] / out["days_in_year"]).round(4)
+    if "ssn_mean" in out.columns:
+        out["ssn_mean"] = out["ssn_mean"].round(2)
     out["complete_year"] = out["n_months"] == 12
     return out

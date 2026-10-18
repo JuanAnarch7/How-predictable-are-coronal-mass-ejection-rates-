@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-COLUMNS = ["year", "month", "decimal_date", "ssn", "ssn_std", "n_obs", "definitive"]
+COLUMNS = ["year", "month", "decimal_date", "ssn", "ssn_std", "ssn_n_obs", "definitive"]
 
 
 def read_ssn(path: str | Path) -> pd.DataFrame:
@@ -35,4 +35,4 @@ def read_ssn(path: str | Path) -> pd.DataFrame:
     df["ssn"] = df["ssn"].where(df["ssn"] >= 0, np.nan)
     df["ssn_std"] = df["ssn_std"].where(df["ssn_std"] >= 0, np.nan)
     df["ssn_provisional"] = df["definitive"].astype(int) == 0
-    return df[["yearmonth", "ssn", "ssn_std", "n_obs", "ssn_provisional"]]
+    return df[["yearmonth", "ssn", "ssn_std", "ssn_n_obs", "ssn_provisional"]]
