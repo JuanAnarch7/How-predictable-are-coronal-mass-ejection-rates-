@@ -15,10 +15,8 @@ last_month = "2026-07"   # last month present in the raw file
 
 [data.ssn]
 # SILSO monthly mean total sunspot number, version 2.0 (SN_m_tot_V2.0).
-# Not yet in data/raw/: download it, record it in data/raw/PROVENANCE.md and fill sha256.
 raw_file = "data/raw/SN_m_tot_V2.0.csv"
-sha256 = ""
-
+sha256 = "4749cc16c68e0673f56ec850674d05c4c87c9d3cb8485f45351931b3822f3f3e"
 [subpopulations]
 # Speeds in km/s (catalog linear speed), widths in degrees (catalog angular width).
 # Every subpopulation is also counted without events flagged "Poor Event"/"Very Poor Event"
