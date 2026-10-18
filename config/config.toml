@@ -1,0 +1,65 @@
+# Single source of truth for every choice that affects the results.
+# Scripts read this file; no threshold, date or file name is hard-coded elsewhere.
+# Any change here must be recorded in docs/DECISIONS.md.
+
+[project]
+working_title = "Probabilistic forecasts of monthly and annual CME rates from the sunspot number: a reproducible verification framework"
+status = "data stage (F0 complete, F1 protocol pending)"
+
+[data.cdaw]
+# SOHO/LASCO CDAW universal CME list, text version.
+raw_file = "data/raw/cdaw_univ_all_2026-07-31.txt"
+sha256 = "da8320553490467659a55d05cbfe83b941bc49f28dafeddc326429eb98265725"
+first_month = "1996-01"
+last_month = "2026-07"   # last month present in the raw file
+
+[data.ssn]
+# SILSO monthly mean total sunspot number, version 2.0 (SN_m_tot_V2.0).
+# Not yet in data/raw/: download it, record it in data/raw/PROVENANCE.md and fill sha256.
+raw_file = "data/raw/SN_m_tot_V2.0.csv"
+sha256 = ""
+
+[subpopulations]
+# Speeds in km/s (catalog linear speed), widths in degrees (catalog angular width).
+# Every subpopulation is also counted without events flagged "Poor Event"/"Very Poor Event"
+# (suffix _good in the output tables).
+primary = "fast"          # pending author confirmation (docs/DECISIONS.md, D-05)
+
+[subpopulations.all]
+description = "All catalogued CMEs"
+
+[subpopulations.fast]
+description = "Fast CMEs, V >= 1000 km/s"
+min_speed = 1000
+
+[subpopulations.halo]
+description = "Full halo CMEs, W = 360 deg"
+min_width = 360
+max_width = 360
+
+[subpopulations.wide]
+description = "Wide CMEs, 120 <= W <= 360 deg (includes full halos)"
+min_width = 120
+max_width = 360
+
+[coverage]
+# PROVISIONAL proxy until the official LASCO data-gap information is used:
+# intervals of at least this many days without any catalogued CME are treated as gaps.
+# During solar minima such intervals can be genuine quiet periods (see docs/data_audit.md).
+gap_threshold_days = 5.0
+# Months whose catalogued-CME gap covers more than this fraction are marked unusable.
+max_gap_fraction_usable = 0.5
+
+[cycles]
+# Month boundaries used to label solar cycles in summaries (minimum months, SILSO 13-month smoothed).
+# Values to be confirmed against SILSO before publication (docs/DECISIONS.md, D-07).
+c23_start = "1996-05"
+c24_start = "2008-12"
+c25_start = "2019-12"
+
+[outputs]
+events = "data/processed/cme_events.csv"
+monthly = "data/processed/cme_monthly.csv"
+annual = "data/processed/cme_annual.csv"
+numbers = "results/numbers.json"
+latex_macros = "manuscript/generated/numbers.tex"

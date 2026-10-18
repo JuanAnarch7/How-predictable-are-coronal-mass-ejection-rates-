@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Large generated file (rebuilt in seconds by scripts/build_dataset.py)
+data/processed/cme_events.csv
+
+# LaTeX build files
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.synctex.gz
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

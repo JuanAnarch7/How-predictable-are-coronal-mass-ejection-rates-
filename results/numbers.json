@@ -1,0 +1,14 @@
+{
+  "FirstEventDate": "1996-01-11",
+  "LastEventDate": "2026-07-31",
+  "NEventsFast": 1036,
+  "NEventsHalo": 1033,
+  "NEventsSpeedMissing": 119,
+  "NEventsTotal": 43440,
+  "NFastTwentyTwentyFive": 70,
+  "NMonthsTotal": 367,
+  "NMonthsUnusable": 6,
+  "PctQualityFlaggedAll": "63.5",
+  "PctQualityFlaggedFast": "8.7",
+  "PctQualityFlaggedHalo": "13.5"
+}

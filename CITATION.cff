@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite it as below."
+title: "CME rate forecast verification"
+type: software
+version: 0.1.0
+license: MIT
+# TO CONFIRM: author list, spelling, affiliations, ORCID iDs and repository URL.
+authors:
+  - family-names: "Jiménez Sanabria"
+    given-names: "Juan Rafael"
+  - family-names: "Pineda Cruz"
+    given-names: "Daniel Felipe"
+  - family-names: "Chávez Aponte"
+    given-names: "Cristian David"
+repository-code: "https://github.com/JuanAnarch7/cme-rate-forecast-verification"
+keywords:
+  - coronal mass ejections
+  - sunspot number
+  - forecast verification
+  - space weather
+  - SOHO/LASCO

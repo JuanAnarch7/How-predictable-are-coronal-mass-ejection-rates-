@@ -1,0 +1,4 @@
+# Tested versions (Python 3.13). Python >= 3.11 is required (tomllib).
+numpy==2.5.3
+pandas==3.0.5
+# Added in later stages: statsmodels (F2), matplotlib (F3)
