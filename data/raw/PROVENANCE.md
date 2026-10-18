@@ -24,11 +24,12 @@ the manuscript.
 
 | Field | Value |
 |---|---|
-| File | `SN_m_tot_V2.0.csv` — **pending** |
+| File | `SN_m_tot_V2.0.csv` |
 | Product | Monthly mean total sunspot number, version 2.0 |
 | Source | https://www.sidc.be/SILSO/ |
-| Download date | — |
-| SHA-256 | — (add it to `config/config.toml` as well) |
-| Last month / last definitive month | — |
+| Download date | 2026-10-18 |
+| SHA-256 | `4749cc16c68e0673f56ec850674d05c4c87c9d3cb8485f45351931b3822f3f3e` |
+| Coverage | 1749-01 to 2026-09 (3333 months) |
+| Last definitive month | 2026-06 (2026-07 to 2026-09 provisional) |
 
 Source: WDC-SILSO, Royal Observatory of Belgium, Brussels.
