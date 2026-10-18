@@ -95,6 +95,8 @@ class TestSsnReader(unittest.TestCase):
             self.assertEqual(df["ssn_provisional"].tolist(), [True, False, False])
             self.assertTrue(np.isnan(df.loc[2, "ssn_std"]))
             self.assertAlmostEqual(df.loc[0, "ssn"], 112.5)
+            # no SSN column may start with "n_": those are treated as CME counts
+            self.assertFalse(any(c.startswith("n_") for c in df.columns))
 
     def test_rejects_wrong_file(self):
         with tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False) as fh:
