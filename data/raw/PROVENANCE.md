@@ -11,7 +11,7 @@ with a new name and a new entry below; update `config/config.toml` to point to i
 | Product | SOHO/LASCO CME Catalog, universal list, text version |
 | Source | https://cdaw.gsfc.nasa.gov/CME_list/ |
 | Coverage | 1996-01-11 00:14:36 to 2026-07-31 22:00:31 (43 440 CMEs) |
-| Download date | pending: to be supplied by the author (after 2026-07-31) |
+| Download date | 2026-10-18 |
 | SHA-256 | `da8320553490467659a55d05cbfe83b941bc49f28dafeddc326429eb98265725` |
 | Size | 5 472 211 bytes |
 | Catalog version notes | Includes the position-angle correction applied by CDAW on 2026-01-30 (remarks "Fixed the PA issue on 2026-01-30" for events from August 2019 onwards). |
