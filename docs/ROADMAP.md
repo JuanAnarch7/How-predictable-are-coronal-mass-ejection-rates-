@@ -24,6 +24,7 @@ Each stage ends with its outputs committed, `./run_all.sh` passing and the decis
 - [ ] NOAA/NASA 2019 panel forecast stored in `data/raw/` with provenance
 
 ## F2 · Models
+- [x] Block 1: predictors by information set, rolling origin, scores; no-leakage tests (2026-11-14)
 - [ ] Baselines
 - [ ] Negative-binomial GLMs (history, SSN, forecast SSN, oracle), coverage as exposure
 
