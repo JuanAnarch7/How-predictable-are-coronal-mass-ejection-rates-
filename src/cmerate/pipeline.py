@@ -5,7 +5,7 @@ import warnings
 
 import pandas as pd
 
-from . import cdaw, ssn as ssn_mod, tables
+from . import cdaw, coverage, ssn as ssn_mod, tables
 from .config import check_checksum, repo_path
 
 
@@ -24,7 +24,12 @@ def build_all(cfg: dict) -> dict[str, pd.DataFrame]:
         warnings.warn(f"{raw_ssn.name} not found: tables are built without sunspot numbers.",
                       stacklevel=2)
 
-    monthly = tables.build_monthly(events, cfg, ssn)
+    dt = cfg["data"]["lasco_downtime"]
+    gaps, available = coverage.read_downtime_dir(repo_path(dt["dir"]), dt["manifest_sha256"])
+    months = pd.period_range(cfg["data"]["cdaw"]["first_month"], cfg["data"]["cdaw"]["last_month"], freq="M")
+    official = coverage.official_monthly_coverage(gaps, months, available)
+
+    monthly = tables.build_monthly(events, cfg, ssn, official)
     annual = tables.build_annual(monthly)
     return {"events": events, "monthly": monthly, "annual": annual}
 
@@ -47,5 +52,6 @@ def dataset_numbers(events: pd.DataFrame, monthly: pd.DataFrame) -> dict:
         "PctQualityFlaggedHalo": f"{100 * events.loc[halo, 'quality_flagged'].mean():.1f}",
         "NMonthsTotal": int(len(monthly)),
         "NMonthsUnusable": int((~monthly["usable"]).sum()),
+        "NMonthsCoverageUnknown": int(monthly["coverage_fraction"].isna().sum()),
         "NFastTwentyTwentyFive": int((fast & (year == 2025)).sum()),
     }

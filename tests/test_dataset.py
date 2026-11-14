@@ -68,6 +68,19 @@ class TestRealCatalog(unittest.TestCase):
         for ym in ["1998-07", "1998-08", "1998-09", "1999-01"]:
             self.assertIn(ym, unusable)
 
+    def test_official_coverage(self):
+        """Coverage comes from the official LASCO/C2 gap lists (D-15), not from the proxy."""
+        cov = self.monthly.set_index("yearmonth")["coverage_fraction"]
+        self.assertEqual(cov["1998-08"], 0.0)                 # SOHO lost
+        self.assertAlmostEqual(cov["2012-05"], 0.7352, places=4)
+        self.assertEqual(cov["2020-06"], 1.0)                 # quiet minimum, no gap (proxy: 0.81)
+        self.assertTrue(np.isnan(cov["2026-07"]))             # no list published at download time
+        self.assertFalse(bool(self.monthly.set_index("yearmonth").loc["2026-07", "usable"]))
+
+    def test_no_test_period_month_lost(self):
+        m = self.monthly[(self.monthly["yearmonth"] >= "2010-01") & (self.monthly["yearmonth"] <= "2026-06")]
+        self.assertEqual(int(m["usable"].sum()), 198)
+
     def test_monthly_counts_add_up(self):
         m = self.monthly[self.monthly["usable"]]
         self.assertTrue((m["n_all_good"] + m["n_quality_flagged"] == m["n_all"]).all())

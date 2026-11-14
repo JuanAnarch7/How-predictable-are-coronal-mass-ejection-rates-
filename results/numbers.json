@@ -6,8 +6,9 @@
   "NEventsSpeedMissing": 119,
   "NEventsTotal": 43440,
   "NFastTwentyTwentyFive": 70,
+  "NMonthsCoverageUnknown": 1,
   "NMonthsTotal": 367,
-  "NMonthsUnusable": 6,
+  "NMonthsUnusable": 10,
   "PctQualityFlaggedAll": "63.5",
   "PctQualityFlaggedFast": "8.7",
   "PctQualityFlaggedHalo": "13.5"

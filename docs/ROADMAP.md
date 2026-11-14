@@ -9,9 +9,9 @@ Each stage ends with its outputs committed, `./run_all.sh` passing and the decis
 - [x] Data audit (`docs/data_audit.md`) (2026-10-18)
 - [x] Versioned SILSO sunspot-number file (D-08) (2026-10-18)
 - [x] Cycle boundaries checked against the 13-month smoothed SSN (D-07) (2026-10-18)
-- [ ] Catalog download date in `data/raw/PROVENANCE.md`
-- [ ] Confirm target subpopulations (D-05)
-- [ ] Official LASCO data-gap information replaces the 5-day proxy (D-06)
+- [x] Catalog download date in `data/raw/PROVENANCE.md` (2026-10-21)
+- [x] Confirm target subpopulations (D-05): fast and full halos (2026-11-13)
+- [x] Official LASCO data-gap information replaces the 5-day proxy (D-15) (2026-11-14)
 
 ## F1 · Evaluation protocol (frozen before any model is fitted to test data)
 - [ ] Issue dates and horizons (1, 3, 6, 12 months; 12- and 24-month totals)

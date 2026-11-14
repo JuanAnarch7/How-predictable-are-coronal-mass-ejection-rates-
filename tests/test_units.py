@@ -25,7 +25,7 @@ CFG = {
         "halo": {"min_width": 360, "max_width": 360},
         "wide": {"min_width": 120, "max_width": 360},
     },
-    "coverage": {"gap_threshold_days": 5.0, "max_gap_fraction_usable": 0.5},
+    "coverage": {"proxy_gap_threshold_days": 5.0, "max_gap_fraction_usable": 0.5},
     "cycles": {"c23_start": "1996-05", "c24_start": "2008-12", "c25_start": "2019-12"},
 }
 
@@ -128,6 +128,51 @@ class TestCoverage(unittest.TestCase):
         days = pd.Series(pd.date_range("2021-07-01", "2021-07-31", freq="4D"))
         cov = coverage.monthly_coverage(days, pd.period_range("2021-07", "2021-07", freq="M"), 5.0)
         self.assertEqual(cov.loc[0, "gap_days"], 0.0)
+
+
+class TestOfficialCoverage(unittest.TestCase):
+    JUL = ("# LASCO C2 downtimes\n"
+           "2021/07/10 00:00 - 2021/07/12 12:00\n"
+           "2021/07/31 18:00 - 2021/08/01 06:00\n")
+    AUG = ("# LASCO C2 downtimes\n"
+           "2021/07/31 18:00 - 2021/08/01 06:00\n"      # same gap, listed in both months
+           "2021/08/05 00:00 - 2021/08/05 00:00\n")     # zero-length line: harmless
+    SEP = "# LASCO C2 downtimes\n# No LASCO/C2 data gap during this month.\n"
+    MONTHS = pd.period_range("2021-07", "2021-10", freq="M")
+
+    def coverage(self):
+        gaps = pd.concat([coverage.parse_downtime_text(t) for t in (self.JUL, self.AUG, self.SEP)])
+        return coverage.official_monthly_coverage(gaps, self.MONTHS, {"2021-07", "2021-08", "2021-09"})
+
+    def test_comment_lines_and_parsing(self):
+        self.assertEqual(len(coverage.parse_downtime_text(self.SEP)), 0)
+        self.assertEqual(len(coverage.parse_downtime_text(self.JUL)), 2)
+
+    def test_rejects_unreadable_line(self):
+        with self.assertRaises(ValueError):
+            coverage.parse_downtime_text("# header\n2021/07/10 - 2021/07/12\n")
+        with self.assertRaises(ValueError):
+            coverage.parse_downtime_text("2021/07/12 00:00 - 2021/07/10 00:00\n")
+
+    def test_cross_month_gap_clipped_and_not_duplicated(self):
+        cov = self.coverage().set_index("yearmonth")
+        self.assertAlmostEqual(cov.loc["2021-07", "gap_days"], 2.5 + 0.25, places=4)
+        self.assertAlmostEqual(cov.loc["2021-08", "gap_days"], 0.25, places=4)
+        self.assertAlmostEqual(cov.loc["2021-07", "longest_gap_days"], 2.5, places=4)
+        self.assertEqual(cov.loc["2021-09", "coverage_fraction"], 1.0)
+
+    def test_month_without_list_is_unknown_not_complete(self):
+        cov = self.coverage().set_index("yearmonth")
+        self.assertTrue(np.isnan(cov.loc["2021-10", "coverage_fraction"]))
+
+    def test_unknown_coverage_month_is_unusable(self):
+        cov = self.coverage()
+        times = pd.date_range("2021-07-01 06:00", "2021-10-31 06:00", freq="D")
+        cfg = dict(CFG, data={"cdaw": {"first_month": "2021-07", "last_month": "2021-10"}})
+        monthly = tables.build_monthly(_events(list(times)), cfg, official_coverage=cov)
+        self.assertEqual(monthly["usable"].tolist(), [True, True, True, False])
+        self.assertTrue(np.isnan(monthly.loc[3, "n_all"]))
+        self.assertAlmostEqual(monthly.loc[0, "coverage_fraction"], 1 - 2.75 / 31, places=4)
 
 
 class TestTables(unittest.TestCase):

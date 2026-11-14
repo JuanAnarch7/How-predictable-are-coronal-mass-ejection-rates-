@@ -68,18 +68,33 @@ Interpretation:
 
 ## 3. Observing gaps
 
-Months without catalogued CMEs were previously zero-filled. Gaps found from the spacing
-of consecutive events:
-- no data: 1998-07, 1998-08, 1998-09, 1999-01 (SOHO outages);
-- partial months: 1998-06, 1998-10, 1998-11, 1998-12, 1999-02;
-- 7–10-day gaps during high activity: Sep–Oct 1999, Jun–Jul 2003, Apr 2004, May 2012.
+Months without catalogued CMEs were previously zero-filled. Coverage now comes from the
+official LASCO/C2 data-gap lists published by CDAW for each month (gaps of 3 h or more;
+`data/raw/lasco_downtime/`, D-15). 366 of the 367 monthly lists were available at download
+time; the list for 2026-07 was not yet published (HTTP 404), so that month has unknown
+coverage and is unusable. The lists contain 1165 gap intervals; 30 cross a month boundary
+and are clipped to each month without double counting.
 
-The current coverage measure (`src/cmerate/coverage.py`) treats any interval of at least
-5 days without catalogued CMEs as a gap. It is a **provisional proxy**: during solar minima
-such intervals can be genuine quiet periods. It will be replaced by the official LASCO
-data-gap information before coverage is used as an exposure term.
+Mean official coverage is 0.871 in 1996–2009 and 0.976 in 2010–2026-06. Unusable months
+(> 50 % gap or no list): 1996-01 to 1996-04 (mission commissioning; coverage 0.03–0.38),
+1998-07 to 1998-10 and 1999-01 (SOHO outages), and 2026-07. No month of the 2010-01 to
+2026-06 test period is unusable. Three test-period months have coverage below 0.8: 2010-07
+(0.78), 2010-08 (0.79) and 2012-05 (0.74).
 
-Counts in months with more than 50 % gap are set to missing (6 months).
+Comparison with the provisional 5-day proxy used before D-15 (correlation 0.83; 59 months
+differ by more than 0.1): the proxy missed gaps shorter than 5 days (e.g. 1996-03 to
+1996-05, 2003-07, 2004-09, 2006-09 and 2009-02 have proxy coverage 0.93–1.00 but official
+coverage 0.34–0.73) and marked genuine quiet periods at solar minimum as gaps (2018-06:
+proxy 0.81, official 0.99; 2020-06: proxy 0.81, official 1.00). 2002-02 (coverage 0.77) is a
+real gap.
+
+Effect on the cycle ratios of Section 2: none of the newly unusable months falls in Cycles
+23–25 as defined here, so the ratios computed from summed counts are unchanged. Because
+mean coverage of usable months was lower in Cycle 23 (0.91) than in Cycles 24 and 25 (0.97
+and 0.98), dividing by covered time instead
+lowers the ratios relative to C23: fast 0.68 (C24/C23) and 1.04 (C25/C23); halos 1.39 and
+1.25; all CMEs 1.62 and 0.97 (exploratory; exposure-adjusted figures used in the manuscript
+will be produced by code).
 
 ## 4. Catalog versions
 
@@ -116,6 +131,6 @@ checks them.
 
 ## 7. Pending
 
-- Official LASCO data-gap information.
+- Treatment of LASCO/C3 data gaps (the official lists used here cover C2 only).
 - Archive of historical sunspot-number forecasts with issue dates (for verifying forecasts
   that use a predicted, rather than observed, sunspot number).
