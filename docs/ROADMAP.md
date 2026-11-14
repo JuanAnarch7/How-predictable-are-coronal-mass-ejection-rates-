@@ -14,17 +14,18 @@ Each stage ends with its outputs committed, `./run_all.sh` passing and the decis
 - [x] Official LASCO data-gap information replaces the 5-day proxy (D-15) (2026-11-14)
 
 ## F1 · Evaluation protocol (frozen before any model is fitted to test data)
-- [ ] Issue dates and horizons (1, 3, 6, 12 months; 12- and 24-month totals)
-- [ ] Validation: rolling origin with expanding window; leave-one-cycle-out
-- [ ] Baselines: persistence, moving average, cycle-phase climatology/analogues, GLM on SSN
-- [ ] Metrics: MAE, RMSE, skill scores vs baselines, CRPS, interval coverage; block bootstrap
-- [ ] Source of historical SSN forecasts with issue dates (D-09)
-- [ ] Protocol written to `docs/PROTOCOL.md` and tagged in git
+- [x] Issue dates and horizons (1, 6, 12 months; 12-month totals; calendar years) (D-18, 2026-11-14)
+- [x] Validation: rolling origin with expanding window; leave-one-cycle-out (2026-11-14)
+- [x] References: persistence, MA3, MA12, cycle-phase analogue; SSN-only regression as competitor (D-17, 2026-11-14)
+- [x] Metrics and inference: CRPS skill, PIT, coverage; calibrated Diebold–Mariano, block bootstrap, Holm (D-19, 2026-11-14)
+- [x] Source of SSN forecasts with issue dates (D-09, 2026-11-14)
+- [x] Protocol written to `docs/PROTOCOL.md` and `config/protocol.toml` (2026-11-14)
+- [ ] Tag `protocol-v1.0` and Zenodo deposit
+- [ ] NOAA/NASA 2019 panel forecast stored in `data/raw/` with provenance
 
 ## F2 · Models
 - [ ] Baselines
-- [ ] Poisson / negative-binomial GLMs on SSN (with and without autoregressive term), coverage as exposure
-- [ ] ARIMA / ARIMAX for comparison only
+- [ ] Negative-binomial GLMs (history, SSN, forecast SSN, oracle), coverage as exposure
 
 ## F3 · Results
 - [ ] Skill by subpopulation and horizon

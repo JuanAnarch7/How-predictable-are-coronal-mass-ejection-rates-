@@ -8,8 +8,9 @@ number as the only exogenous predictor.
 *Probabilistic forecasts of monthly and annual CME rates from the sunspot number: a
 reproducible verification framework.*
 
-> **Status: data stage.** The dataset is built, audited and tested. The evaluation
-> protocol, models and results are not yet in the repository (see [`docs/ROADMAP.md`](docs/ROADMAP.md)).
+> **Status: protocol stage.** The dataset is built, audited and tested, and the evaluation
+> protocol is written ([`docs/PROTOCOL.md`](docs/PROTOCOL.md), settings in
+> `config/protocol.toml`). Models and results are not yet in the repository (see [`docs/ROADMAP.md`](docs/ROADMAP.md)).
 
 ## Principles
 
@@ -29,7 +30,8 @@ reproducible verification framework.*
 ## Repository layout
 
 ```
-config/config.toml          single source of truth for all choices
+config/config.toml          data choices (files, subpopulations, coverage, cycles)
+config/protocol.toml        evaluation protocol settings (docs/PROTOCOL.md)
 data/raw/                   raw files exactly as downloaded + PROVENANCE.md
 data/processed/             generated tables (never edited by hand)
 src/cmerate/                Python package: parsing, coverage, tables, numbers export

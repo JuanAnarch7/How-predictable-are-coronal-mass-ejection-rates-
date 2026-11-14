@@ -14,6 +14,7 @@ Previous repository:
 | One-step-ahead in-sample fits shown as forecasting ability. | Multi-step out-of-sample forecasts only, with rolling origin and leave-one-cycle-out validation. | In-sample one-step fits track the series by construction. |
 | Improvements reported as percentage changes of \|R²\|. | Skill scores relative to baselines; probabilistic verification. | Relative changes of R² are not interpretable. |
 | Annual test period of 5 points. | 12-month-ahead totals issued every month. | More, and genuinely out-of-sample, verification points. |
+| ARIMA, ARIMAX, SARIMA and SARIMAX models. | Negative-binomial count models with coverage as exposure; ARIMA-type models dropped (D-23). | CME counts are small, often zero and observed with gaps; a count model handles this directly, and the earlier ARIMAX skill came from the observed future SSN, not from the model class. |
 
 ## Data
 

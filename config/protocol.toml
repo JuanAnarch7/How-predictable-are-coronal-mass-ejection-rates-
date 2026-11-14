@@ -1,0 +1,118 @@
+# Evaluation protocol: machine-readable settings (docs/PROTOCOL.md).
+# The forecasting and verification code reads every analysis option from this file.
+# After the tag protocol-v1.0, any change must be logged in docs/PROTOCOL_CHANGES.md.
+
+[protocol]
+version = "protocol-v1.0"
+status = "draft"                       # "frozen" once tagged
+document = "docs/PROTOCOL.md"
+
+[periods]
+training_start = "1996-01"
+test_target_first = "2010-01"
+test_target_last = "2026-06"
+# 12-month totals: first issue covers 2010-01..2010-12, last covers 2025-07..2026-06
+total12_issue_first = "2009-12"
+total12_issue_last = "2025-06"
+calendar_year_first = 2010
+calendar_year_last = 2025
+
+[targets]
+subpopulations = ["fast", "halo"]      # names from config.toml [subpopulations]
+also_without_flagged = true            # _good versions, supplementary only
+
+[horizons]
+monthly = [1, 6, 12]                   # common target set; issue = target - h
+monthly_supplementary = [3]
+total12 = true                         # primary target
+calendar_year = true                   # descriptive, issued in January
+
+[information]
+issue_convention = "issued on day 1 of month t+1 with data to the end of month t"
+latency_main = 0
+latency_sensitivity = [1, 3]
+minimum_known_after_months = 12
+predictor_windows = [3, 12]            # months, for CME rate and SSN means
+last_month_term_horizons = [1]
+max_unusable_fraction_in_window = 0.25
+
+[coverage]
+target_min_monthly = 0.5               # usable months (D-15)
+target_min_window = 0.9                # covered fraction of a 12-month or calendar-year window
+sensitivity_exclude_below = 0.8
+
+[models]
+family = "negative_binomial_2"
+link = "log"
+refit = "every_issue"
+window = "expanding"
+references = ["persistence", "ma3", "ma12", "phase_analogue"]
+main = "nb_hist_ssn"
+competitors = ["ssn_only"]
+secondary = ["nb_hist", "climatology"]
+oe3 = "nb_hist_ssn_fc"
+upper_bound = "nb_hist_ssn_oracle"
+phase_analogue_monthly_halfwindow = 1
+reference_dispersion = "moments_from_training_errors"
+
+[ssn_forecast]
+method = "scaled_mean_cycle"
+reference_cycles_since_year = 1855
+min_current_cycle_months_for_scaling = 12
+scaling_window_months = 24
+max_horizon_months = 24
+n_trajectories = 500
+error_model = "empirical_log_ratio_by_horizon_joint"
+case_study = "NOAA/NASA Solar Cycle 25 Prediction Panel, December 2019"
+
+[uncertainty]
+layers = ["ssn", "parameters", "counts"]
+parameter_draws = "asymptotic_normal"
+
+[metrics]
+primary = "crps"
+calibration = ["pit_randomized", "coverage", "width80"]
+interval_levels = [0.5, 0.8, 0.95]
+secondary = ["mae_median", "rmse_mean", "bias_by_cycle"]
+robustness = ["log_score"]
+event_threshold = "upper_tercile_calendar_year_totals_1996_2009"
+skill_reference = "best_of_references_on_evaluated_set"
+pit_bins = 10
+
+[inference]
+alpha_familywise = 0.05
+sides = "one"
+multiplicity = "holm"
+confirmatory = ["P1_fast", "P1_halo"]
+statistic = "diebold_mariano_newey_west_hln"
+newey_west_lags_total12 = 11
+critical_value = "calibrated_by_simulation"
+calibration_replicates = 2000
+calibration_generator_fit_period = ["1996-01", "2009-12"]
+calibration_latent_ar1 = true
+bootstrap = "moving_block"
+bootstrap_replicates = 10000
+block_months_total12 = 24
+block_months_monthly = 12
+block_months_monthly_sensitivity = [6, 36]
+block_years_calendar = 2
+ci_level = 0.95
+
+[success]
+coverage80_low = 0.70
+coverage80_high = 0.90
+
+[leave_one_cycle_out]
+splits = [["C23", "C24"], ["C24", "C23"], ["C23+C24", "C25"]]
+
+[sensitivity]
+speed_thresholds = [900, 1100]
+halo_exclude_years = [2025]
+log_score = true
+
+[post_freeze]
+catalogs = ["data/raw/cdaw_univ_all_2026-11-14.txt"]
+first_target = "2026-07"
+
+[random]
+seed = 20261114

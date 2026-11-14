@@ -4,7 +4,7 @@
 
 [project]
 working_title = "Probabilistic forecasts of monthly and annual CME rates from the sunspot number: a reproducible verification framework"
-status = "data stage (F0 complete, F1 protocol pending)"
+status = "protocol stage (F0 complete; F1 protocol written, not yet tagged)"
 
 [data.cdaw]
 # SOHO/LASCO CDAW universal CME list, text version.

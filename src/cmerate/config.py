@@ -7,9 +7,16 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = REPO_ROOT / "config" / "config.toml"
+DEFAULT_PROTOCOL = REPO_ROOT / "config" / "protocol.toml"
 
 
 def load_config(path: str | Path = DEFAULT_CONFIG) -> dict:
+    with open(path, "rb") as fh:
+        return tomllib.load(fh)
+
+
+def load_protocol(path: str | Path = DEFAULT_PROTOCOL) -> dict:
+    """Evaluation-protocol settings (docs/PROTOCOL.md); the only source of analysis options."""
     with open(path, "rb") as fh:
         return tomllib.load(fh)
 
