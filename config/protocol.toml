@@ -57,9 +57,14 @@ reference_dispersion = "moments_from_training_errors"
 
 [ssn_forecast]
 method = "scaled_mean_cycle"
-reference_cycles_since_year = 1855
+# C and W are chosen by the backtest rule below (docs/PROTOCOL.md §5), before code-v1.0
+reference_cycles_since_year_candidates = [1855, 1940]
+scaling_window_months_candidates = [24, "all"]
+default_variant = [1855, 24]           # used on ties within the tolerance
+backtest_issues = ["1960-01", "2009-12"]
+backtest_score = "crps_mean_ssn_next_12_months"
+backtest_tie_tolerance = 0.01
 min_current_cycle_months_for_scaling = 12
-scaling_window_months = 24
 max_horizon_months = 24
 n_trajectories = 500
 error_model = "empirical_log_ratio_by_horizon_joint"
@@ -88,7 +93,8 @@ statistic = "diebold_mariano_newey_west_hln"
 newey_west_lags_total12 = 11
 critical_value = "calibrated_by_simulation"
 calibration_replicates = 2000
-calibration_generator_fit_period = ["1996-01", "2009-12"]
+calibration_generator_fit_periods = [["1996-01", "2009-12"], ["1996-01", "2026-06"]]
+calibration_rule = "max_critical_value"
 calibration_latent_ar1 = true
 bootstrap = "moving_block"
 bootstrap_replicates = 10000

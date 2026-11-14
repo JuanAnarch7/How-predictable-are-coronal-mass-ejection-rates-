@@ -98,16 +98,25 @@ A direct model is fitted for each target; no model is fed its own forecasts.
 **Reconstructed SSN forecasts (I2, main).** At each issue t, the SSN of months t+1…t+24 is
 forecast with a *scaled mean-cycle* method that uses only data up to t:
 
-1. Reference cycles: all cycles of the SILSO V2.0 series since 1855 whose end is known at t,
-   aligned at their minimum (minimum of the 13-month smoothed SSN, same algorithm as D-07).
-   Mean cycle shape S(k), k = months since minimum.
+1. Reference cycles: cycles of the SILSO V2.0 series whose minimum (13-month smoothed SSN,
+   same algorithm as D-07) falls in or after the cut-off year C, and whose end is known at t,
+   aligned at their minimum. Mean cycle shape S(k), k = months since minimum.
 2. Current cycle: months since the last minimum known at t (Section 3).
 3. If at least 12 months of the current cycle are observed, the forecast is A·S(k), with A the
-   least-squares scale factor of the observed current-cycle SSN against S(k) over the last
-   24 observed months (or all, if fewer); otherwise A = 1.
+   least-squares scale factor of the observed current-cycle SSN against S(k) over the last W
+   observed months (or all, if fewer); otherwise A = 1.
 4. Uncertainty: the empirical distribution of log((1+observed)/(1+forecast)) of this method
    by horizon, from all past issues whose targets were observed by t, sampled as 500
    trajectories (one residual vector per past issue, preserving correlation across horizons).
+
+**Choice of C and W (fixed rule, applied before `code-v1.0`).** Four variants are compared:
+C ∈ {1855, 1940} × W ∈ {24 months, all observed months of the current cycle}. Each variant
+issues SSN forecasts every month from 1960-01 to 2009-12, using only data up to each issue
+date. They are scored with the CRPS of the mean SSN of the next 12 months (the quantity the
+I2 model uses for 12-month totals). The variant with the lowest mean CRPS is used; ties
+within 1 % go to C = 1855, W = 24. The SSN of 2010 onwards is not used to choose the
+variant, so the choice is independent of the test period. The backtest scores and the
+chosen variant are recorded with `code-v1.0`.
 
 **Case study (I2).** The NOAA/NASA Solar Cycle 25 Prediction Panel forecast (December 2019)
 for Cycle 25, with its published range, stored in `data/raw/` with provenance before use.
@@ -200,14 +209,18 @@ the I★ − I1 gap.
   Harvey–Leybourne–Newbold correction.
 - **Calibrated critical value.** Because overlapping 12-month windows make the usual
   bootstrap and Diebold–Mariano tests anti-conservative (false-positive rates of 6–9 % at a
-  nominal 2.5 % in a pre-freeze simulation), the critical value is calibrated by simulation:
-  2000 synthetic CME series are drawn from an NB2 generator with log μ = a + b·log(1+SSN) and
-  a persistent latent AR(1) term, fitted to counts of 1996-01 to 2009-12 only and driven by the
-  real SSN; on each, two forecasts of equal expected skill (NB-hist plus one of two independent
-  irrelevant smooth covariates) are compared with the full rolling-origin pipeline. The
-  critical value for each Holm step is the corresponding upper quantile of the simulated
-  statistic. The generator, seeds and resulting critical values are recorded with
-  `code-v1.0`, before the test period is scored.
+  nominal 2.5 % in a pre-freeze simulation), the critical value is calibrated by simulation.
+  Synthetic CME series are drawn from an NB2 generator with log μ = a + b·log(1+SSN) and a
+  persistent latent AR(1) term, driven by the real SSN. On each series, two forecasts of
+  equal expected skill (NB-hist plus one of two independent irrelevant smooth covariates)
+  are compared with the full rolling-origin pipeline, and the statistic is recorded. The
+  critical value for each Holm step is the corresponding upper quantile over 2000 series.
+  This is done with **two generators**: (a) fitted to counts of 1996-01 to 2009-12 only (main),
+  and (b) fitted to counts of 1996-01 to 2026-06 (control; it uses test-period counts but no
+  forecast or score, and a null generator carries no information on skill). **The larger of
+  the two critical values is used**, and both are reported, so the choice of generator can
+  never make the test more permissive. Generators, seeds and critical values are recorded
+  with `code-v1.0`, before the test period is scored.
 - **Intervals for skill scores:** moving-block bootstrap, 10 000 replicates; block 24 months
   for 12-month totals, 12 for monthly horizons (sensitivity: 6, 36), 2 years for calendar-year
   totals. Reported with the effective number of independent windows (≈ 16 years).

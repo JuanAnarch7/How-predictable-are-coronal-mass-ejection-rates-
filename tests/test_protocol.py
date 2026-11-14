@@ -64,6 +64,19 @@ class TestProtocol(unittest.TestCase):
         self.assertLess(lo, 0.8)
         self.assertGreater(hi, 0.8)
 
+    def test_ssn_forecast_backtest_outside_test_period(self):
+        f = self.p["ssn_forecast"]
+        c, w = f["default_variant"]
+        self.assertIn(c, f["reference_cycles_since_year_candidates"])
+        self.assertIn(w, f["scaling_window_months_candidates"])
+        self.assertLess(month(f["backtest_issues"][1]), month(self.p["periods"]["test_target_first"]))
+
+    def test_calibration_uses_conservative_rule(self):
+        inf = self.p["inference"]
+        self.assertEqual(inf["calibration_rule"], "max_critical_value")
+        main = inf["calibration_generator_fit_periods"][0]
+        self.assertLess(month(main[1]), month(self.p["periods"]["test_target_first"]))
+
     def test_post_freeze_catalogs_exist(self):
         for f in self.p["post_freeze"]["catalogs"]:
             self.assertTrue(repo_path(f).exists(), f)
