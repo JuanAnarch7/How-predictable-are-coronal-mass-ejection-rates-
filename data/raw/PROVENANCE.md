@@ -35,3 +35,13 @@ Research Laboratory. SOHO is a project of international cooperation between ESA 
 | Last definitive month | 2026-06 (2026-07 to 2026-09 provisional) |
 
 Source: WDC-SILSO, Royal Observatory of Belgium, Brussels.
+
+## LASCO/C2 data-gap lists
+
+| Field | Value |
+|---|---|
+| Folder | `lasco_downtime/` (367 monthly files + `MANIFEST.csv`) |
+| Source | https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/ |
+| Download date | 2026-11-13 |
+| Retrieved | 362 of 367 months |
+| Details | `lasco_downtime/README.md` |
