@@ -106,6 +106,20 @@ Results must therefore cite the catalog version used (see `data/raw/PROVENANCE.m
 Between the February 2026 and July 2026 versions, the 42 744 events up to 2026-02-28 are
 identical except for one event whose PA and width changed.
 
+Between the July 2026 version and the version downloaded on 2026-11-14 (catalog header:
+last updated 2026-11-12), the 43 440 events up to 2026-07-31 are identical in every field
+except three changes, all in 2026: the event of 2026-04-15 11:48 changed from a partial halo
+(width 259°) to a full halo (remark: width changed on 2026-11-03); the onset time of the
+full halo of 2026-07-21 changed from 05:48 to 06:24 (changed on 2026-11-12); and one narrow
+event was inserted on 2026-07-21 (inserted on 2026-11-12). No event of 2025 or earlier
+changed. The November file adds 118 CMEs for 2026-08 and starts with three header lines that
+the July file does not have.
+
+Full halos in 2025 are therefore not a pending revision visible in this interval: the
+catalog still lists 41 (102 in 2024). The low halo fraction among fast CMEs in 2025 (0.27)
+has a precedent in 2022 (0.27; 2023–2024: 0.45–0.52). Whether it is physical or a feature of
+the width measurements cannot be decided from the catalog alone.
+
 ## 5. Other findings
 
 - 119 events have no linear speed. They are kept, counted in the total and reported

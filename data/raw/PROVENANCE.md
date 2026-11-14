@@ -22,6 +22,20 @@ site before submission): "This CME catalog is generated and maintained at the CD
 Center by NASA and The Catholic University of America in cooperation with the Naval
 Research Laboratory. SOHO is a project of international cooperation between ESA and NASA."
 
+### Later download, for version comparison only (not used by the pipeline)
+
+| Field | Value |
+|---|---|
+| File | `cdaw_univ_all_2026-11-14.txt` |
+| Product | SOHO/LASCO CME Catalog, universal list, text version |
+| Source | https://cdaw.gsfc.nasa.gov/CME_list/ |
+| Catalog header | "LAST UPDATED: 2026/11/12 14:43" (three header lines, absent from the July file) |
+| Coverage | 1996-01-11 00:14:36 to 2026-08-31 07:24:20 (43 559 CMEs) |
+| Download date | 2026-11-14 |
+| SHA-256 | `e9ee4d690f2ab907245d8675bbc0c1865e342da166d7a6a1ec58333e6503e2b4` |
+| Size | 5 486 806 bytes |
+| Use | Comparison with the July 2026 version (`docs/data_audit.md`, Section 4) and, later, verification of forecasts whose targets fall after 2026-06. The analysis remains pinned to the July file. |
+
 ## SILSO sunspot number
 
 | Field | Value |
