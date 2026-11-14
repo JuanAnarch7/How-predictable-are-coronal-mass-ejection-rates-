@@ -9,9 +9,9 @@ before deciding whether CMEs occurred during a period.
 | Files | `c2dt_YYYYMM.txt`, one per month, 1996-01 to 2026-07 |
 | Source | `https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_YYYYMM.txt` (linked from each monthly page of the catalog) |
 | Downloaded with | `scripts/download_lasco_downtime.py` |
-| Download date | 2026-11-13 (UTC; per-file timestamps in `MANIFEST.csv`) |
-| Files retrieved | 362 of 367 months |
-| Not available | 201304 201305 201306 201307 202607  |
+| Download date | 2026-11-13, 2026-11-14 (UTC; per-file timestamps in `MANIFEST.csv`) |
+| Files retrieved | 366 of 367 months |
+| Not available | 202607 |
 | Checksums | SHA-256 of every file in `MANIFEST.csv` |
 
 Files are stored exactly as downloaded. Never edit them; a new download goes to a new

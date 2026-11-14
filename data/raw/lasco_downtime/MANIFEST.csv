@@ -206,10 +206,10 @@ yearmonth,url,status,bytes,sha256,downloaded_utc
 201301,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201301.txt,200,129,0417e637ae37a88e0c5eee997af3dc18eb0a1711d5e0a30d167a9eefa2ccaacb,2026-11-13T22:56:27Z
 201302,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201302.txt,200,63,088d9ebfd7cee8e7670c2c7e0b847881d7d85ae4e9ae5e6d7d391125e8a53d61,2026-11-13T22:56:41Z
 201303,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201303.txt,200,93,1b2f4fe03b56210e1bae50a8731cd0167143586e47e8dee8d184319d3698b17f,2026-11-13T22:57:01Z
-201304,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201304.txt,error: Remote end closed connection without response,,,2026-11-13T22:57:18Z
-201305,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201305.txt,error: Remote end closed connection without response,,,2026-11-13T22:57:19Z
-201306,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201306.txt,error: Remote end closed connection without response,,,2026-11-13T22:57:21Z
-201307,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201307.txt,error: Remote end closed connection without response,,,2026-11-13T22:57:22Z
+201304,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201304.txt,200,57,daa9f2a59be61795a66d7cdfc150284e84ef65077db570727b9333d44b53f7e7,2026-11-14T15:56:46Z
+201305,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201305.txt,200,57,8e4b6057eafcc29afe1a73c19179b2c4077b438431e92925ece4cdbc51c8bb4f,2026-11-14T15:56:48Z
+201306,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201306.txt,200,93,3b46cae560b0d981f8da531ba72151a958d371ff5b50c55496c35c0144bb2aff,2026-11-14T15:56:49Z
+201307,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201307.txt,200,129,fdca41b638487f0b139cbbe9704f4a393618c82b003e4bbb5b8c7db8acf1735b,2026-11-14T15:56:51Z
 201308,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201308.txt,200,63,088d9ebfd7cee8e7670c2c7e0b847881d7d85ae4e9ae5e6d7d391125e8a53d61,2026-11-13T22:57:23Z
 201309,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201309.txt,200,129,887f350aac61e5ed5a3d27bbcdeb1e8f4d51c29998ff6f5625046880437684f9,2026-11-13T22:57:26Z
 201310,https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/c2dt_201310.txt,200,57,8381c32a0ba3dfedf5294a9d0309020fea5456f26c0afe8bfcb5b1547dc010fd,2026-11-13T22:57:28Z

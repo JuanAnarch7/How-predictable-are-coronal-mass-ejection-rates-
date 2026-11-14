@@ -40,8 +40,8 @@ Source: WDC-SILSO, Royal Observatory of Belgium, Brussels.
 
 | Field | Value |
 |---|---|
-| Folder | `lasco_downtime/` (367 monthly files + `MANIFEST.csv`) |
+| Folder | `lasco_downtime/` (366 monthly files + `MANIFEST.csv`) |
 | Source | https://cdaw.gsfc.nasa.gov/CME_list/UNIVERSAL/downtime/ |
-| Download date | 2026-11-13 |
-| Retrieved | 362 of 367 months |
+| Download date | 2026-11-13, 2026-11-14 |
+| Retrieved | 366 of 367 months |
 | Details | `lasco_downtime/README.md` |
