@@ -16,6 +16,10 @@ authors:
     given-names: "Cristian David"
     affiliation: "Astrophysics and Cosmology Group, Department of Physics, Universidad Pedagógica y Tecnológica de Colombia"
 repository-code: "https://github.com/JuanAnarch7/How-predictable-are-coronal-mass-ejection-rates-"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24225880"
+    description: "Archived release protocol-v1.0 (evaluation protocol frozen, 2026-11-14)"
 keywords:
   - coronal mass ejections
   - sunspot number

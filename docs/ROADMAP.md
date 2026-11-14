@@ -20,7 +20,7 @@ Each stage ends with its outputs committed, `./run_all.sh` passing and the decis
 - [x] Metrics and inference: CRPS skill, PIT, coverage; calibrated Diebold–Mariano, block bootstrap, Holm (D-19, 2026-11-14)
 - [x] Source of SSN forecasts with issue dates (D-09, 2026-11-14)
 - [x] Protocol written to `docs/PROTOCOL.md` and `config/protocol.toml` (2026-11-14)
-- [ ] Tag `protocol-v1.0` and Zenodo deposit
+- [x] Tag `protocol-v1.0` and Zenodo deposit, doi:10.5281/zenodo.24225880 (2026-11-14)
 - [ ] NOAA/NASA 2019 panel forecast stored in `data/raw/` with provenance
 
 ## F2 · Models

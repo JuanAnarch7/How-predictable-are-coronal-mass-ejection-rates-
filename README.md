@@ -8,9 +8,11 @@ number as the only exogenous predictor.
 *Probabilistic forecasts of monthly and annual CME rates from the sunspot number: a
 reproducible verification framework.*
 
-> **Status: protocol stage.** The dataset is built, audited and tested, and the evaluation
-> protocol is written ([`docs/PROTOCOL.md`](docs/PROTOCOL.md), settings in
-> `config/protocol.toml`). Models and results are not yet in the repository (see [`docs/ROADMAP.md`](docs/ROADMAP.md)).
+> **Status: protocol frozen.** The dataset is built, audited and tested. The evaluation
+> protocol ([`docs/PROTOCOL.md`](docs/PROTOCOL.md), settings in `config/protocol.toml`) was
+> frozen on 2026-11-14 as git tag `protocol-v1.0`, archived on Zenodo:
+> [doi:10.5281/zenodo.24225880](https://doi.org/10.5281/zenodo.24225880).
+> Models and results are not yet in the repository (see [`docs/ROADMAP.md`](docs/ROADMAP.md)).
 
 ## Principles
 
