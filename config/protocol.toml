@@ -4,7 +4,7 @@
 
 [protocol]
 version = "protocol-v1.0"
-status = "draft"                       # "frozen" once tagged
+status = "frozen"                      # "frozen" once tagged
 document = "docs/PROTOCOL.md"
 
 [periods]
